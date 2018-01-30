@@ -1,0 +1,35 @@
+//  models/research/object_detection/protos/yolo_anchor_generator.proto
+syntax = "proto2";
+
+package object_detection.protos;
+
+// Configuration proto for SSD anchor generator described in
+// https://arxiv.org/abs/1512.02325. See
+// anchor_generators/multiple_grid_anchor_generator.py for details.
+message YoloAnchorGenerator {  
+  // Anchors at each grid point. 
+  repeated float anchors = 1;
+
+  // The base anchor size in height dimension.
+  optional float base_anchor_height = 2 [default = 1.0];
+
+  // The base anchor size in width dimension.
+  optional float base_anchor_width = 3 [default = 1.0];
+
+  // Anchor stride in height dimension in pixels for each layer. The length of
+  // this field is expected to be equal to the value of num_layers.
+  repeated int32 height_stride = 4;
+
+  // Anchor stride in width dimension in pixels for each layer. The length of
+  // this field is expected to be equal to the value of num_layers.
+  repeated int32 width_stride = 5;
+
+  // Anchor height offset in pixels for each layer. The length of this field is
+  // expected to be equal to the value of num_layers.
+  repeated int32 height_offset = 6;
+
+  // Anchor width offset in pixels for each layer. The length of this field is
+  // expected to be equal to the value of num_layers.
+  repeated int32 width_offset = 7;
+}
+
