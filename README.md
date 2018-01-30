@@ -2,7 +2,7 @@
 
 ## Added or Updated file list
 These files need to be copied into the following `tensorflow/models/` directories
-> Hint: It could be best practice to backup the original files that will be overwritten although these files do not change moduls but only extend them
+> Hint: To be secure you may want to backup the original files that will be overwritten (although the new files do not change/delete existing code but only extend it)
 
     Config:
         research/object_detection/samples/configs/yolo_v2_darknet_19_voc.config
