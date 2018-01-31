@@ -1,4 +1,3 @@
-#  models/research/object_detection/core/losses.py
 # Copyright 2017 The TensorFlow Authors. All Rights Reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -279,7 +278,8 @@ class ConfidenceWeightedSigmoidClassificationLoss(Loss):
       target_tensor: A float tensor of shape [batch_size, num_anchors,
         num_classes] representing one-hot encoded classification targets
       weights: a float tensor of shape [batch_size, num_anchors]
-      noobj_lambda: a float. 
+      object_scale: a float. 
+      noobject_scale: a float.      
       class_indices: (Optional) A 1-D integer tensor of class indices.
         If provided, computes loss only for the specified class indices.
 
@@ -294,9 +294,9 @@ class ConfidenceWeightedSigmoidClassificationLoss(Loss):
     
     diff = conf_prediction_tensor - conf_target_tensor
     square_diff = tf.square(diff)
-    diff_eq_1 = tf.equal(diff, 1) # 0: obj | 1: noobj
+    detectors_mask = tf.equal(conf_target_tensor, 1) # 0: obj | 1: noobj
     confidence_loss = tf.reduce_sum(
-        tf.where(diff_eq_1, noobject_scale * square_diff, object_scale * square_diff),
+        tf.where(detectors_mask, noobject_scale * square_diff, object_scale * square_diff),
         2) * weights
     classfication_loss = tf.reduce_sum((tf.nn.sigmoid_cross_entropy_with_logits(
         labels=cls_target_tensor, logits=cls_prediction_tensor)), 2) * weights
@@ -686,4 +686,3 @@ class HardExampleMiner(object):
     num_negatives = tf.size(subsampled_selection_indices) - num_positives
     return (tf.reshape(tf.gather(indices, subsampled_selection_indices), [-1]),
             num_positives, num_negatives)
-
