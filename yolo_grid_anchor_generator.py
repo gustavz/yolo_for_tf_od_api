@@ -199,7 +199,7 @@ class YoloGridAnchorGenerator(anchor_generator.AnchorGenerator):
         [num_anchors, 4], dtype=tf.float32, name='stddevs')
     anchors.add_field('stddev', stddevs_tensor)
 
-    return anchors
+    return [anchors]
 
 
 def create_yolo_anchors(anchors=None,
