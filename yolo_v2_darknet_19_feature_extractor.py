@@ -81,7 +81,7 @@ class YOLOv2Darknet19FeatureExtractor(ssd_meta_arch.SSDFeatureExtractor):
         ['image size must at least be 33 in both height and width.'])
 
     with tf.control_dependencies([shape_assert]):
-      with slim.arg_scope(darknet.darknet_arg_scope()):
+      with slim.arg_scope(darknet.darknet_arg_scope(is_training = self._is_training)):
         with tf.variable_scope('darknet_19',
                                reuse=self._reuse_weights) as scope:
           net, end_points = darknet.darknet_19_base(preprocessed_inputs, 
