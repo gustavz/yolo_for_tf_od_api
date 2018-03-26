@@ -19,6 +19,7 @@ Usage of arg scope:
 """
 def darknet_arg_scope(weight_decay=0.00004,
                       use_batch_norm=True,
+                      is_training=True,                      
                       batch_norm_decay=0.9997,
                       batch_norm_epsilon=0.001,
                       activation_fn=leaky_relu):
@@ -44,6 +45,7 @@ def darknet_arg_scope(weight_decay=0.00004,
       'updates_collections': tf.GraphKeys.UPDATE_OPS,
       # use fused batch norm if possible.
       'fused': None,
+      'is_training': is_training,    
   }
   if use_batch_norm:
     normalizer_fn = slim.batch_norm
