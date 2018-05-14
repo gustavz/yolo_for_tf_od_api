@@ -1,4 +1,4 @@
-# All files are copied from [rky0930](https://github.com/rky0930/models/blob/object_detection_yolo/research/object_detection/README.md)
+# This is a collection of  all necessary files to include YoloV2 / Darknet to tensorflow's [object_detection repo](https://github.com/tensorflow/models/tree/master/research/object_detection)
 
 > Note: The original files in the `tensorflow/models/research/object_detection` repo changed since this project (March 2018). Manual copying of the yolo related functions into the updated files of the repo may be necessary!
 
@@ -33,4 +33,4 @@ These files need to be copied into the following `tensorflow/models/` directorie
         research/object_detection/builders/model_builder.py
         research/object_detection/meta_architectures/yolo_meta_arch.py
 
-**©rky0930**
+**©[rky0930](https://github.com/rky0930/models/blob/object_detection_yolo/research/object_detection/README.md)**
