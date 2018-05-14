@@ -1,5 +1,7 @@
 # All files are copied from [rky0930](https://github.com/rky0930/models/blob/object_detection_yolo/research/object_detection/README.md)
 
+> Note: The original files in the `tensorflow/models/research/object_detection` repo changed since this project (March 2018). Manual copying of the yolo related functions into the updated files of the repo may be necessary!
+
 ## Added or Updated file list
 These files need to be copied into the following `tensorflow/models/` directories
 > Hint: To be secure you may want to backup the original files that will be overwritten (although the new files do not change/delete existing code but only extend it)
